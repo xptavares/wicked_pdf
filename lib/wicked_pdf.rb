@@ -68,7 +68,7 @@ class WickedPdf
   def pdf_from_url(url, options = {})
     # merge in global config options
     options.merge!(WickedPdf.config) {|key, option, config| option}
-    generated_pdf_file = WickedPdfTempfile.new("wicked_pdf_generated_file.pdf", options[:temp_path])
+    generated_pdf_file = WickedPdfTempfile.new(options[:file_name] || "wicked_pdf_generated_file.pdf", options[:temp_path])
     command = [@exe_path]
     command << '-q' unless on_windows? # suppress errors on stdout
     command += parse_options(options)
